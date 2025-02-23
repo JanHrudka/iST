@@ -14,7 +14,7 @@ This project provides a serial line data logger for the Innovative Sensor Techno
   This module is included by default in Python, so no separate installation is required.
 
 - **Operating System**
-  Works on Windows, Linux, and macOS as long as the correct serial port is provided.
+  Works on Windows, Linux, and macOS as long as the correct serial port is find.
 
 ## Usage
 
@@ -32,3 +32,23 @@ This project provides a serial line data logger for the Innovative Sensor Techno
 
   4. Stop the script:
   Press Ctrl+C to stop the logging process. The data will be saved at the moment of interruption.
+
+## Data Output Format:
+  The data will be saved in the following format in the .json file:
+  ```json
+{
+  "Conductivity measured:": ["value1", "value2", ...],
+  "Temperature Sensor:": ["value1", "value2", ...],
+  "Conductivity T 25 C:": ["value1", "value2", ...],
+  "Current I:": ["value1", "value2", ...],
+  "Voltage Ui:": ["value1", "value2", ...],
+  "Voltage Uo:": ["value1", "value2", ...],
+  "Measurement range:": ["value1", "value2", ...]
+}
+  ```
+  Excel 2016 and later versions allow you to import data directly from a JSON file. Here’s how a user can do it:
+    1. Open Excel.
+    2. Go to the “Data” tab.
+    3. Click “Get Data” > “From File” > “From JSON”.
+    4. Browse to the location of the JSON file and select it.
+    5. Excel will parse the JSON and display the data in a table format, which you can then manipulate or save as an Excel file.
