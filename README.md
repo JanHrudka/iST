@@ -47,8 +47,8 @@ This project provides a serial line data logger for the Innovative Sensor Techno
 }
   ```
   Excel 2016 and later versions allow you to import data directly from a JSON file. Here’s how a user can do it:
-    1. Open Excel.
-    2. Go to the “Data” tab.
-    3. Click “Get Data” > “From File” > “From JSON”.
-    4. Browse to the location of the JSON file and select it.
-    5. Excel will parse the JSON and display the data in a table format, which you can then manipulate or save as an Excel file.
+  1. Open Excel.
+  2. Go to the “Data” tab.
+  3. Click “Get Data” > “From File” > “From JSON”.
+  4. Browse to the location of the JSON file and select it.
+  5. Excel will parse the JSON and display the data in a table format, which you can then manipulate or save as an Excel file.
