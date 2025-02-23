@@ -1,4 +1,5 @@
 import serial
+import serial.tools.list_ports
 import re
 import json
 import time
@@ -12,6 +13,15 @@ data_output = {
     'Voltage Uo:': [],
     'Measurement range:': []
 }
+
+def find_serial_port():
+    """Automatically detect the serial port that corresponds to the C4L Eval Board V1."""
+    ports = list(serial.tools.list_ports.comports())
+    for port in ports:
+        # Check if the port is related to the C4L Eval Board (you may adjust the device name or VID/PID)
+        if 'USB Serial Port' in port.description or 'USB Serial' in port.description:
+            return port.device
+    raise Exception("C4L Eval Board not found. Please check the connection.")
 
 def data_check():
     """Check if all 'Measurement range:' values are the same."""
@@ -68,9 +78,12 @@ def reset_data():
     for key in data_output:
         data_output[key] = []
 
-def read_serial(port='COM10', baudrate=115200):
-    """Read data from the serial port and process it."""
+def read_serial(port=None, baudrate=115200):
+    """Read data from the serial port and process it."""    
     try:
+        if port is None:
+            port = find_serial_port()  # Automatically find the port if not provided
+
         with serial.Serial(port, baudrate, timeout=1) as ser:
             print(f"Reading from {port} at {baudrate} baud...")
             buffer = ""
